@@ -2,7 +2,8 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  Animated
+  Animated,
+  Text
 } from 'react-native';
 
 import { PanGestureHandler, State } from 'react-native-gesture-handler'
@@ -66,6 +67,7 @@ const SwiperTop = () => {
         }]
       }
       ]}>
+        <Text style={{ color: '#fff', fontSize: 30 }}>Cérebro</Text>
         <View style={styles.containerSlideTop} />
       </Animated.View>
     </PanGestureHandler>
@@ -80,14 +82,16 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 60,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
-
+    alignItems: 'center',
+    shadowOffset: { width: 500, height: 120, },
+    shadowColor: 'black',
+    shadowOpacity: 8.0,
   },
   containerSlideTop: {
     height: 5,
     backgroundColor: '#fff',
     width: 50,
-    top: 190
+    top: 175
   },
 })
 

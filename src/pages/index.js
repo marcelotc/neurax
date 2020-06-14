@@ -16,6 +16,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Menu from '../components/menu/';
 
+import Calendar from '../components/calendar/'
+
 import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
@@ -63,7 +65,7 @@ const App = () => {
                             </TouchableWithoutFeedback>
                         </View>
                         <View style={styles.calendarContainer}>
-                            <Text style={{ color: '#fff', fontSize: 30 }}>Calendário</Text>
+                            <Calendar></Calendar>
                         </View>
                         <SwiperBottom></SwiperBottom>
                     </View>
@@ -86,16 +88,10 @@ const styles = StyleSheet.create({
     calendarContainer: {
         position: 'absolute',
         width: '100%',
-        height: '50%',
+        height: '75%',
         top: 100,
-        left: 0,
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
         zIndex: -1,
-        borderColor: 'blue',
-        borderWidth: 10
-    },
-    calendar: {
-        backgroundColor: '#000',
     },
     container: {
         backgroundColor: '#fff'

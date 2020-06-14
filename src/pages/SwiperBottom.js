@@ -3,7 +3,8 @@ import {
     View,
     StyleSheet,
     Animated,
-    Dimensions
+    Dimensions,
+    Text
 } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
@@ -70,6 +71,7 @@ const SwiperBottom = () => {
                     }),
                 }]
             }]}>
+                <Text style={{ color: '#fff', fontSize: 30, bottom: 100 }}>Legenda</Text>
                 <View style={styles.containerSlideBottom} />
             </Animated.View>
         </PanGestureHandler>
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
         height: 5,
         backgroundColor: '#fff',
         width: 50,
-        top: -190
+        top: -215
     }
 })
 
