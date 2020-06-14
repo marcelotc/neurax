@@ -65,7 +65,7 @@ const SwiperBottom = () => {
                 transform: [{
                     translateY: translateY.interpolate({
                         inputRange: [-350, 0, 380],
-                        outputRange: [10, HEIGHT - 490, 380],
+                        outputRange: [10, HEIGHT - 480, 380],
                         extrapolate: 'clamp'
                     }),
                 }]
