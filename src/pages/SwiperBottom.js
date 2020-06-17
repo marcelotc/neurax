@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         height: 5,
         backgroundColor: '#fff',
         width: 50,
-        top: -260
+        top: -290
     }
 })
 

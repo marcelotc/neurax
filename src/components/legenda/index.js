@@ -2,12 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
 const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
 
 const Legenda = () => {
     return (
         <View style={styles.container}>
             <View style={styles.legendaContainer}>
-                <View style={{ ...styles.icon, backgroundColor: 'green' }}><Text style={styles.iconNumber}>1</Text></View>
+                <View style={{ ...styles.icon, backgroundColor: '#59ff00' }}><Text style={styles.iconNumber}>1</Text></View>
                 <Text style={styles.text}>Lobo frontal</Text>
             </View>
             <View style={styles.legendaContainer}>
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         paddingLeft: WIDTH / 20,
+        paddingBottom: HEIGHT / 20,
         bottom: 50
     },
     text: {
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: '50%',
-        marginBottom: 50
+        marginBottom: 55
     },
     icon: {
         height: 30,
