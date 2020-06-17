@@ -4,7 +4,6 @@ import { View, StyleSheet } from 'react-native';
 import Svg, { Path, Circle } from 'react-native-svg';
 
 const CerebroSvg = () => {
-
     const [nivelFrontal, setNivelFrontal] = useState('#59ff00')
     const [nivelTemporal, setNivelTemporal] = useState('lightblue')
     const [nivelOccipital, setNivelOccipital] = useState('red')
