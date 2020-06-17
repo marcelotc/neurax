@@ -58,7 +58,7 @@ const App = (props) => {
                         <View style={styles.menuButtonContainer}>
                             <TouchableWithoutFeedback style={styles.menuButon} onPress={() => toggle()}>
                                 <Icon
-                                    name="menu"
+                                    name={isOpen ? 'close' : 'menu'}
                                     color="#fff"
                                     size={30}
                                 ></Icon>
