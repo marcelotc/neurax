@@ -5,7 +5,8 @@ const { width, height } = Dimensions.get('window');
 
 const HEIGHT = Dimensions.get('window').height;
 
-const Menu = () => {
+const Menu = (props) => {
+    const { navigate } = props.navigation
     return (
         <View style={styles.menu}>
             <View style={styles.headerContainer}>
@@ -16,7 +17,7 @@ const Menu = () => {
                     <Text style={styles.text}>Calendário</Text>
                 </View>
                 <View style={styles.noSelectedItems}>
-                    <Text style={styles.text}>Progresso</Text>
+                    <Text style={styles.text} onPress={() => navigate('cerebroSvg')}>Progresso</Text>
                 </View>
                 <View style={styles.noSelectedItems}>
                     <Text style={styles.text}>Configurações</Text>

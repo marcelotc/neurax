@@ -14,13 +14,13 @@ import SwiperBottom from './SwiperBottom';
 import SideMenu from 'react-native-side-menu';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Menu from '../components/menu/';
+import Menu from '../components/menu';
 
-import Calendar from '../components/calendar/'
+import Calendar from '../components/calendar'
 
 import SplashScreen from 'react-native-splash-screen';
 
-const App = () => {
+const App = (props) => {
     console.disableYellowBox = true; // A lib SideMenu da um warning  
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const App = () => {
             <View style={{ flex: 1 }}>
                 <StatusBar hidden />
                 <SideMenu
-                    menu={<Menu></Menu>}
+                    menu={<Menu navigation={props.navigation}></Menu>}
                     isOpen={isOpen}
                     onChange={(isOpen) => updateMenu(isOpen)}
                     animationFunction={(prop, value) =>
