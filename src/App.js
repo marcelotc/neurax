@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Main from './pages/Main';
-import cerebroSvg from './pages/cerebroSvg';
+import cerebroSvg from './components/cerebro/cerebroSvg';
 
 const Stack = createStackNavigator();
 
