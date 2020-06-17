@@ -8,6 +8,8 @@ import {
 
 import { PanGestureHandler, State } from 'react-native-gesture-handler'
 
+import CerebroSvg from '../components/cerebro/cerebroSvg'
+
 const SwiperTop = () => {
   let offset = 0;
 
@@ -67,7 +69,7 @@ const SwiperTop = () => {
         }]
       }
       ]}>
-        <Text style={{ color: '#fff', fontSize: 30 }}>Cérebro</Text>
+        <CerebroSvg></CerebroSvg>
         <View style={styles.containerSlideTop} />
       </Animated.View>
     </PanGestureHandler>
