@@ -20,10 +20,10 @@ const Menu = (props) => {
                     <Text style={styles.text} onPress={() => navigate('cerebroSvg')}>Progresso</Text>
                 </View>
                 <View style={styles.noSelectedItems}>
-                    <Text style={styles.text}>Configurações</Text>
+                    <Text style={styles.text} onPress={() => navigate('login')}>Configurações</Text>
                 </View>
                 <View style={styles.noSelectedItems}>
-                    <Text style={styles.text}>Sair</Text>
+                    <Text style={styles.text} onPress={() => navigate('cadastro')}>Sair</Text>
                 </View>
             </View>
         </View>
