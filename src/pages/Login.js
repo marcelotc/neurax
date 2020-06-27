@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { TextInput, Button, ActivityIndicator, View, Text, Image, StyleSheet } from 'react-native';
+import { TextInput, ActivityIndicator, View, Text, Image, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
