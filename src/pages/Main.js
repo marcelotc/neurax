@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     StatusBar,
     TouchableWithoutFeedback,
@@ -20,7 +19,7 @@ import Calendar from '../components/calendar'
 
 import SplashScreen from 'react-native-splash-screen';
 
-const App = (props) => {
+const Main = (props) => {
     console.disableYellowBox = true; // A lib SideMenu da um warning  
 
     useEffect(() => {
@@ -101,4 +100,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default App;
+export default Main;
