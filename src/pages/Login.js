@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { TextInput, Button, ActivityIndicator, View, Text, Image, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Login = (props) => {
     const { navigate } = props.navigation
+
+    const secondInput = useRef();
 
     return (
         <View style={styles.container}>
@@ -24,9 +26,19 @@ const Login = (props) => {
                     {formikProps => (
                         <>
                             <Text style={styles.inputText}>Usuário</Text>
-                            <TextInput style={styles.input} onChangeText={formikProps.handleChange('user')} />
+                            <TextInput
+                                style={styles.input}
+                                onChangeText={formikProps.handleChange('user')}
+                                returnKeyType="next"
+                                autoCapitalize='none'
+                                onSubmitEditing={() => secondInput.current.focus()} />
                             <Text style={styles.inputText}>Senha</Text>
-                            <TextInput style={styles.input} onChangeText={formikProps.handleChange('password')} />
+                            <TextInput
+                                style={styles.input}
+                                onChangeText={formikProps.handleChange('password')}
+                                autoCapitalize='none'
+                                ref={secondInput}
+                            />
                             {formikProps.isSubmitting ? (
                                 <ActivityIndicator style={{ marginBottom: 63 }} />
                             ) : <TouchableOpacity style={styles.button} title="Submit" onPress={formikProps.handleSubmit}><Text style={styles.buttonText}>Login</Text></TouchableOpacity>
@@ -64,7 +76,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: '#212121',
+        borderColor: 'grey',
         backgroundColor: '#212121',
         color: '#fff',
         borderRadius: 9,
