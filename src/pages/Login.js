@@ -20,6 +20,7 @@ const Login = (props) => {
                         alert(JSON.stringify(values))
                         setTimeout(() => {
                             actions.setSubmitting(false)
+                            navigate('pageOne')
                         }, 1000)
                     }}
                 >
