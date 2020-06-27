@@ -47,16 +47,17 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         backgroundColor: '#000',
-        height: '100%'
+        height: '100%',
+
     },
     title: {
         fontSize: 90,
-        color: '#fff'
+        color: '#fff',
     },
     brainImg: {
-        height: 160,
-        width: 210,
-        marginTop: 20
+        height: 90,
+        width: 120,
+        marginTop: 20,
     },
     form: {
         width: '80%'
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         borderRadius: 9,
         padding: 20,
-        marginBottom: 30
+        marginBottom: 10
     },
     inputText: {
         color: '#fff',
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 9,
         padding: 5,
-        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: 20,
     },
     buttonText: {
         color: '#000',
