@@ -3,14 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-const ButtonNext = (props) => {
-    const { navigate, page } = props;
+const ButtonPrev = (props) => {
+    const { goBack } = props;
 
     return (
         <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={() => navigate(page)}>
-                <Text style={styles.buttonText}>Próxima página</Text>
-                <Icon name="chevron-right" color='#fff' size={45} />
+            <TouchableOpacity style={styles.button} onPress={() => goBack()}>
+                <Icon name="chevron-left" color='#fff' size={45} />
+                <Text style={styles.buttonText}>Página anterior</Text>
             </TouchableOpacity>
         </View>
     )
@@ -19,7 +19,7 @@ const ButtonNext = (props) => {
 const styles = StyleSheet.create({
     buttonContainer: {
         position: 'absolute',
-        alignSelf: "flex-end",
+        alignSelf: "flex-start",
         bottom: 10,
     },
     button: {
@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         backgroundColor: '#212121',
         borderRadius: 10,
-        paddingLeft: 10,
+        paddingRight: 10,
         flexDirection: 'row',
         borderColor: 'grey',
         borderWidth: 1,
-        marginRight: 10
+        marginLeft: 10
     },
     buttonText: {
         color: '#fff',
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ButtonNext;
+export default ButtonPrev;
