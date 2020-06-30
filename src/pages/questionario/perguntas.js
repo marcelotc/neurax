@@ -5,10 +5,25 @@ import { RadioButton } from 'react-native-paper';
 import questions from './pesquntasObject';
 
 const questionario = () => {
-    const [checkedArray, setCheckedArray] = useState(Array(questions.length).fill('no'));
+    const [checkedArray, setCheckedArray] = useState(Array(questions.length).fill('nao'));
 
     const submitAnswers = () => {
-        alert(JSON.stringify(checkedArray))
+        const results = []
+        const lobes = []
+        var objArray = []
+        for (var answers in checkedArray) {
+            results.push(checkedArray[answers])
+        }
+        questions.map((data) => {
+            lobes.push(data.lobe)
+        })
+        lobes.forEach((v, i) => {
+            var obj = {};
+            obj[v] = results[i]
+            objArray.push(obj)
+        })
+
+        alert(JSON.stringify(objArray))
     }
 
     const handleOnValueChange = (i, value) => {
@@ -23,7 +38,7 @@ const questionario = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>questions app</Text>
+            <Text style={styles.title}>Perguntas de configuração</Text>
             <>
                 <View style={{ marginTop: 50, height: '60%' }} >
                     <ScrollView style={styles.questionsContainer} persistentScrollbar={true}>
@@ -39,19 +54,19 @@ const questionario = () => {
                                     </Text>
                                     <View style={styles.radioButtonContainer}>
                                         <RadioButton
-                                            value='yes'
+                                            value='sim'
                                             color="#fff"
                                             uncheckedColor="#fff"
                                         />
-                                        <Text style={styles.radioText}>Yes </Text>
+                                        <Text style={styles.radioText}>Sim </Text>
                                     </View>
                                     <View style={styles.radioButtonContainer}>
                                         <RadioButton
-                                            value='no'
+                                            value='nao'
                                             color="#fff"
                                             uncheckedColor="#fff"
                                         />
-                                        <Text style={styles.radioText}>No </Text>
+                                        <Text style={styles.radioText}>Não </Text>
                                     </View>
                                 </RadioButton.Group>
                             ))}
@@ -59,11 +74,11 @@ const questionario = () => {
                     </ScrollView>
                 </View>
 
-                <Text style={styles.askedQuestions}>3 de {questions.length} answered questions</Text>
+                <Text style={styles.askedQuestions}>3 de {questions.length} perguntas respondidas</Text>
 
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.button} onPress={submitAnswers}>
-                        <Text style={styles.buttonText}>Submit answers</Text>
+                        <Text style={styles.buttonText}>Finalizar questionário</Text>
                     </TouchableOpacity>
                 </View>
             </>
