@@ -13,7 +13,7 @@ const pageThree = (props) => {
             <Text style={styles.text}>Com este resultado o app irá dar dicas de <Text style={{ fontWeight: 'bold' }}>atividades práticas</Text> que você poderá executar durante sua rotina.</Text>
             <Text style={styles.text}>A cada <Text style={{ fontWeight: 'bold' }}>atividade completada</Text> seu nível de qualidade aumenta, o contrário, diminui.</Text>
 
-            <ButtonNext navigate={navigate} page={'login'}></ButtonNext>
+            <ButtonNext navigate={navigate} page={'perguntas'}></ButtonNext>
             <ButtonPrev goBack={goBack}></ButtonPrev>
         </View>
     )
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: '#fff',
-        fontSize: 30,
+        fontSize: 25,
         textAlign: 'center',
         marginTop: 20,
         fontWeight: 'bold'
