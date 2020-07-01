@@ -5,7 +5,8 @@ import { RadioButton } from 'react-native-paper';
 import questions from './pesquntasObject';
 
 const questionario = () => {
-    const [checkedArray, setCheckedArray] = useState(Array(questions.length).fill('nao'));
+    const [checkedArray, setCheckedArray] = useState(Array(questions.length).fill(''));
+    const [answered, setAnswered] = useState(0);
 
     const submitAnswers = () => {
         const results = []
@@ -24,16 +25,37 @@ const questionario = () => {
         })
 
         alert(JSON.stringify(objArray))
+
+        const frontal = []
+        const temporal = []
+        const occipital = []
+        const parietal = []
+        objArray.map((data) => {
+            frontal.push(data.frontal)
+            temporal.push(data.temporal)
+            occipital.push(data.occipital)
+            parietal.push(data.parietal)
+        })
+
+        const frontalSim = frontal.filter((x) => { return x === "sim" }).length
+        const temporalSim = temporal.filter((x) => { return x === "sim" }).length
+        const occipitalSim = occipital.filter((x) => { return x === "sim" }).length
+        const parietalSim = parietal.filter((x) => { return x === "sim" }).length
+
+        console.log("frontal: ", frontalSim)
+        console.log("temporal: ", temporalSim)
+        console.log("occipital: ", occipitalSim)
+        console.log("parietal: ", parietalSim)
     }
 
     const handleOnValueChange = (i, value) => {
-        //checkedArray.splice(value.idx, 1);
-        console.log(checkedArray)
-
         checkedArray.splice(i, 1, value);
 
         setCheckedArray([...checkedArray]);
 
+        var numberOfQuestionsAnswered = checkedArray.filter((x) => { return x !== ""; }).length;
+
+        setAnswered(numberOfQuestionsAnswered)
     }
 
     return (
@@ -74,10 +96,10 @@ const questionario = () => {
                     </ScrollView>
                 </View>
 
-                <Text style={styles.askedQuestions}>3 de {questions.length} perguntas respondidas</Text>
+                <Text style={styles.askedQuestions}>{answered} de {questions.length} perguntas respondidas</Text>
 
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button} onPress={submitAnswers}>
+                <View style={answered === questions.length ? styles.buttonContainer : { ...styles.buttonContainer, opacity: 0.2 }}>
+                    <TouchableOpacity style={styles.button} onPress={submitAnswers} disabled={answered === questions.length ? false : true}>
                         <Text style={styles.buttonText}>Finalizar questionário</Text>
                     </TouchableOpacity>
                 </View>
@@ -114,7 +136,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         alignSelf: "center",
         bottom: 10,
-        opacity: 0.2
     },
     button: {
         backgroundColor: '#212121',
