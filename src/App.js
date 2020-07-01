@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
 import PageOne from './pages/tutorial/pageOne';
 import PageTwo from './pages/tutorial/pageTwo';
+import Resultado from './pages/resultado/resultado';
 import PageThree from './pages/tutorial/pageThree';
 import Perguntas from './pages/questionario/perguntas';
 import cerebroSvg from './components/cerebro/cerebroSvg';
@@ -32,6 +33,7 @@ const App = () => {
                     <Stack.Screen name="pageTwo" component={PageTwo} />
                     <Stack.Screen name="pageThree" component={PageThree} />
                     <Stack.Screen name="perguntas" component={Perguntas} />
+                    <Stack.Screen name="resultado" component={Resultado} />
                 </Stack.Navigator>
             </NavigationContainer>
         </PaperProvider>

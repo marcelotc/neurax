@@ -4,7 +4,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RadioButton } from 'react-native-paper';
 import questions from './pesquntasObject';
 
-const questionario = () => {
+const questionario = (props) => {
+    const { navigate } = props.navigation;
     const [checkedArray, setCheckedArray] = useState(Array(questions.length).fill(''));
     const [answered, setAnswered] = useState(0);
 
@@ -18,13 +19,13 @@ const questionario = () => {
         questions.map((data) => {
             lobes.push(data.lobe)
         })
-        lobes.forEach((v, i) => {
+        lobes.forEach((v, i) => { //estudar forEach
             var obj = {};
             obj[v] = results[i]
             objArray.push(obj)
         })
 
-        alert(JSON.stringify(objArray))
+        //alert(JSON.stringify(objArray))
 
         const frontal = []
         const temporal = []
@@ -46,10 +47,12 @@ const questionario = () => {
         console.log("temporal: ", temporalSim)
         console.log("occipital: ", occipitalSim)
         console.log("parietal: ", parietalSim)
+
+        navigate('resultado')
     }
 
     const handleOnValueChange = (i, value) => {
-        checkedArray.splice(i, 1, value);
+        checkedArray.splice(i, 1, value); //estudar splice
 
         setCheckedArray([...checkedArray]);
 
