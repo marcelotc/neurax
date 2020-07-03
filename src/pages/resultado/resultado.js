@@ -41,7 +41,7 @@ const resultado = (props) => {
                             <Text style={styles.duvidaButtonText}>Dúvida</Text>
                             <Icon name='help-outline' color='#fff' size={33}></Icon>
                         </TouchableOpacity>
-                        <ButtonNext navigate={navigate} page={'Main'}></ButtonNext>
+                        <ButtonNext navigate={navigate} page={'sugestedActivities'}></ButtonNext>
                     </View>
                 </View>
             </View>
