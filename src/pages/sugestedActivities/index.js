@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import activitiesObject from './activitiesObject';
 import ButtonNext from '../../components/buttons/ButtonNext';
+
+const { width, height } = Dimensions.get('window')
 
 const sugestedActivities = (props) => {
     const { navigate } = props.navigation;
@@ -49,9 +51,6 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#fff',
         borderRadius: 10,
-        marginLeft: 20,
-        marginRight: 20,
-        padding: 5
     },
     tags: {
         flex: 1,
@@ -60,28 +59,29 @@ const styles = StyleSheet.create({
     },
     tagsText: {
         color: '#fff',
-        fontSize: 20,
-        borderWidth: 1.5,
+        fontSize: width * 0.05,
+        fontWeight: '600',
+        borderWidth: 2,
         borderRadius: 10,
         borderColor: '#fff',
-        padding: 10,
-        marginLeft: 15,
-        marginRight: 10,
-        marginTop: 20,
+        marginTop: width * 0.05,
+        marginBottom: width * 0.05,
+        marginLeft: width * 0.05,
+        padding: width * 0.03,
         textAlign: 'center'
     },
     selectedTag: {
         color: '#000',
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: width * 0.05,
+        fontWeight: '600',
         borderWidth: 2,
         borderRadius: 10,
         backgroundColor: '#fff',
         borderColor: '#606060',
-        padding: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 20,
+        marginTop: width * 0.05,
+        marginBottom: width * 0.05,
+        marginLeft: width * 0.05,
+        padding: width * 0.03,
         textAlign: 'center'
     },
     buttonContainer: {

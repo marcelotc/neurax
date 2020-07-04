@@ -1,41 +1,35 @@
+// Tomar cuidado com a quantidade de caracteres ao adicionar uma tag
+
 export default [
     {
-        activity: "Ler um livro",
-        selected: false
+        activity: "Ler um livro"
     },
     {
-        activity: "Praticar esportes",
-        selected: false
+        activity: "Praticar esportes"
     },
 
     {
-        activity: "Estudar um língua estrangeira",
-        selected: false
+        activity: "Estudar um língua estrangeira"
 
     },
     {
-        activity: "Cozinhar",
-        selected: false
+        activity: "Cozinhar"
 
     },
     {
-        activity: "Se alimentar melhor",
-        selected: false
+        activity: "Se alimentar melhor"
 
     },
     {
-        activity: "Tocar um instrumento",
-        selected: false
+        activity: "Tocar um instrumento"
 
     },
     {
-        activity: "Dançar",
-        selected: false
+        activity: "Dançar"
 
     },
     {
-        activity: "Menos tempo em redes sociais",
-        selected: false
+        activity: "Menos tempo em redes sociais"
 
     },
 ];
