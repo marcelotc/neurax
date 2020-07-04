@@ -4,7 +4,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import activitiesObject from './activitiesObject';
 import ButtonNext from '../../components/buttons/ButtonNext';
 
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 const sugestedActivities = (props) => {
     const { navigate } = props.navigation;

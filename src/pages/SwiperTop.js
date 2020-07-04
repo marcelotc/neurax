@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   Animated,
-  Text
 } from 'react-native';
 
 import { PanGestureHandler, State } from 'react-native-gesture-handler'
