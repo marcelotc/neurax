@@ -48,6 +48,11 @@ const questionario = (props) => {
         console.log("occipital: ", occipitalSim)
         console.log("parietal: ", parietalSim)
 
+        alert("frontal: " + frontalSim + "\n" +
+            "temporal: " + temporalSim + "\n" +
+            "occipital: " + occipitalSim + "\n" +
+            "parietal: " + parietalSim)
+
         navigate('resultado')
     }
 
