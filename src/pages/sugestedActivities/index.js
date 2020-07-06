@@ -62,7 +62,7 @@ const sugestedActivities = (props) => {
             <View style={styles.activitiesCountContainer}>
                 <Text style={styles.activitiesCount}>{activitiesCount} atividades selecionadas</Text>
             </View>
-            <View style={{ height: '12%' }}>
+            <View style={{ height: '16%' }}>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.button} onPress={() => selectedActivities()}>
                         <Text style={styles.buttonText}>Próxima página</Text>
@@ -127,10 +127,8 @@ const styles = StyleSheet.create({
         bottom: 10,
     },
     activitiesCountContainer: {
-        position: 'absolute',
-        alignSelf: "flex-start",
-        left: '4%',
-        bottom: '4%',
+        alignSelf: 'center',
+        top: '2%'
     },
     activitiesCount: {
         color: '#fff',
