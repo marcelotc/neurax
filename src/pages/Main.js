@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import SwiperTop from './SwiperTop';
-import SwiperBottom from './SwiperBottom';
 
 import SideMenu from 'react-native-side-menu';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -66,7 +65,6 @@ const Main = (props) => {
                         <View style={styles.calendarContainer}>
                             <Calendar></Calendar>
                         </View>
-                        <SwiperBottom></SwiperBottom>
                     </View>
                 </SideMenu>
             </View>

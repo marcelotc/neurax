@@ -1,13 +1,15 @@
 import React from 'react';
 import {
   View,
+  Text,
   StyleSheet,
   Animated,
 } from 'react-native';
 
-import { PanGestureHandler, State } from 'react-native-gesture-handler'
+import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
-import CerebroSvg from '../components/cerebro/cerebroSvg'
+import CerebroSvg from '../components/cerebro/cerebroSvg';
+import Legenda from '../components/legenda';
 
 const SwiperTop = () => {
   let offset = 0;
@@ -62,13 +64,15 @@ const SwiperTop = () => {
         transform: [{
           translateY: translateY.interpolate({
             inputRange: [-350, 0, 300],
-            outputRange: [-690, -370, -80],
+            outputRange: [-690, -620, -80],
             extrapolate: 'clamp'
           })
         }]
       }
       ]}>
         <CerebroSvg></CerebroSvg>
+        <Text style={styles.text}>Clique em uma das áreas</Text>
+        <Legenda></Legenda>
         <View style={styles.containerSlideTop} />
       </Animated.View>
     </PanGestureHandler>
@@ -78,7 +82,7 @@ const SwiperTop = () => {
 const styles = StyleSheet.create({
   containerTop: {
     backgroundColor: '#000',
-    height: 430,
+    height: 700,
     borderBottomLeftRadius: 60,
     borderBottomRightRadius: 60,
     display: 'flex',
@@ -92,8 +96,15 @@ const styles = StyleSheet.create({
     height: 5,
     backgroundColor: '#fff',
     width: 50,
-    top: 190
+    position: 'absolute',
+    alignSelf: "center",
+    bottom: 20,
   },
+  text: {
+    color: '#fff',
+    fontSize: 20,
+    top: '26%'
+  }
 })
 
 export default SwiperTop;

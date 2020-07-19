@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         paddingLeft: WIDTH / 20,
         paddingBottom: HEIGHT / 20,
-        bottom: 50
+        top: '58%'
     },
     text: {
         color: '#fff',
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         marginBottom: 55
     },
     icon: {
-        height: 30,
-        width: 30,
+        height: HEIGHT * 0.045,
+        width: HEIGHT * 0.045,
         marginRight: 15,
         borderRadius: 50,
     },
