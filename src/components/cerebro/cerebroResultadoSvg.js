@@ -21,7 +21,7 @@ const CerebroSvg = () => {
         setNivelFrontal(colorFrontal.color)
         setNivelTemporal(colorTemporal.color)
         setNivelOccipital(colorOccipital.color)
-        setNivelParietal(colorOccipital.color)
+        setNivelParietal(colorParietal.color)
 
     }, [])
 

@@ -87,13 +87,13 @@ const questionario = (props) => {
         }
 
         if (parietalSim >= 7) {
-            dispatch(temporalColor('#59ff00'))
+            dispatch(parietalColor('#59ff00'))
         } else if (parietalSim <= 6 && parietalSim >= 5) {
-            dispatch(temporalColor('yellow'))
+            dispatch(parietalColor('yellow'))
         } else if (parietalSim < 5 && parietalSim >= 4) {
-            dispatch(temporalColor('lightblue'))
+            dispatch(parietalColor('lightblue'))
         } else {
-            dispatch(temporalColor('red'))
+            dispatch(parietalColor('red'))
         }
         navigate('resultado')
     }
