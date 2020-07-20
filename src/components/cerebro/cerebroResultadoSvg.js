@@ -1,13 +1,29 @@
-import React, { useState, } from 'react';
+import React, { useState, useEffect, } from 'react';
+import { useSelector } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 
 import Svg, { Path, Line } from 'react-native-svg';
 
 const CerebroSvg = () => {
-    const [nivelFrontal, setNivelFrontal] = useState('#59ff00')
-    const [nivelTemporal, setNivelTemporal] = useState('lightblue')
-    const [nivelOccipital, setNivelOccipital] = useState('red')
-    const [nivelParietal, setNivelParietal] = useState('yellow')
+    const colors = useSelector(state => state.resultado);
+
+    const [nivelFrontal, setNivelFrontal] = useState('grey');
+    const [nivelTemporal, setNivelTemporal] = useState('grey');
+    const [nivelOccipital, setNivelOccipital] = useState('grey');
+    const [nivelParietal, setNivelParietal] = useState('grey');
+
+    useEffect(() => {
+        let colorFrontal = colors.find((c) => { return c.lobe === 'frontal' });
+        let colorTemporal = colors.find((c) => { return c.lobe === 'temporal' });
+        let colorOccipital = colors.find((c) => { return c.lobe === 'occipital' });
+        let colorParietal = colors.find((c) => { return c.lobe === 'parietal' });
+
+        setNivelFrontal(colorFrontal.color)
+        setNivelTemporal(colorTemporal.color)
+        setNivelOccipital(colorOccipital.color)
+        setNivelParietal(colorOccipital.color)
+
+    }, [])
 
     return (
         <View

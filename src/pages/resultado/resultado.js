@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, } from 'react-native';
-import CerebroSvg from '../../components/cerebro/cerebroResultadoSvg';
+import CerebroSvgResultado from '../../components/cerebro/cerebroResultadoSvg';
 import ButtonNext from '../../components/buttons/ButtonNext';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -11,7 +11,7 @@ const resultado = (props) => {
         <View style={styles.container}>
             <View style={styles.top}>
                 <Text style={styles.legendaTitle}>Seu nível de qualidade de cada lobo</Text>
-                <CerebroSvg></CerebroSvg>
+                <CerebroSvgResultado></CerebroSvgResultado>
             </View>
             <View style={styles.bottom}>
                 <View style={styles.bottomItem}>

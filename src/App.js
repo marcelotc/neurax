@@ -2,6 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './redux/reducers'
+
+const store = createStore(rootReducer)
 
 import Main from './pages/Main';
 import Login from './pages/Login';
@@ -18,27 +23,29 @@ const Stack = createStackNavigator();
 
 const App = () => {
     return (
-        <PaperProvider>
-            <NavigationContainer>
-                <Stack.Navigator
-                    screenOptions={{
-                        headerShown: false,
-                        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-                    }}
-                    initialRouteName="Main">
-                    <Stack.Screen name="Main" component={Main} />
-                    <Stack.Screen name="cerebroSvg" component={cerebroSvg} />
-                    <Stack.Screen name="login" component={Login} />
-                    <Stack.Screen name="cadastro" component={Cadastro} />
-                    <Stack.Screen name="pageOne" component={PageOne} />
-                    <Stack.Screen name="pageTwo" component={PageTwo} />
-                    <Stack.Screen name="pageThree" component={PageThree} />
-                    <Stack.Screen name="perguntas" component={Perguntas} />
-                    <Stack.Screen name="resultado" component={Resultado} />
-                    <Stack.Screen name="sugestedActivities" component={SugestedActivities} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </PaperProvider>
+        <Provider store={store}>
+            <PaperProvider>
+                <NavigationContainer>
+                    <Stack.Navigator
+                        screenOptions={{
+                            headerShown: false,
+                            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+                        }}
+                        initialRouteName="Main">
+                        <Stack.Screen name="Main" component={Main} />
+                        <Stack.Screen name="cerebroSvg" component={cerebroSvg} />
+                        <Stack.Screen name="login" component={Login} />
+                        <Stack.Screen name="cadastro" component={Cadastro} />
+                        <Stack.Screen name="pageOne" component={PageOne} />
+                        <Stack.Screen name="pageTwo" component={PageTwo} />
+                        <Stack.Screen name="pageThree" component={PageThree} />
+                        <Stack.Screen name="perguntas" component={Perguntas} />
+                        <Stack.Screen name="resultado" component={Resultado} />
+                        <Stack.Screen name="sugestedActivities" component={SugestedActivities} />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </PaperProvider>
+        </Provider>
     );
 }
 

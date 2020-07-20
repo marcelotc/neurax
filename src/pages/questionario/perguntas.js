@@ -3,11 +3,14 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RadioButton } from 'react-native-paper';
 import questions from './pesquntasObject';
+import { frontalColor, temporalColor, occipitalColor, parietalColor } from '../../redux/actions/resultado';
+import { useDispatch } from 'react-redux';
 
 const questionario = (props) => {
     const { navigate } = props.navigation;
     const [checkedArray, setCheckedArray] = useState(Array(questions.length).fill(''));
     const [answered, setAnswered] = useState(0);
+    const dispatch = useDispatch();
 
     const submitAnswers = () => {
         const results = []
@@ -53,6 +56,45 @@ const questionario = (props) => {
             "occipital: " + occipitalSim + "\n" +
             "parietal: " + parietalSim)
 
+        if (frontalSim >= 7) {
+            dispatch(frontalColor('#59ff00'))
+        } else if (frontalSim <= 6 && frontalSim >= 5) {
+            dispatch(frontalColor('yellow'))
+        } else if (frontalSim < 5 && frontalSim >= 4) {
+            dispatch(frontalColor('lightblue'))
+        } else {
+            dispatch(frontalColor('red'))
+        }
+
+        if (temporalSim >= 7) {
+            dispatch(temporalColor('#59ff00'))
+        } else if (temporalSim <= 6 && temporalSim >= 5) {
+            dispatch(temporalColor('yellow'))
+        } else if (temporalSim < 5 && temporalSim >= 4) {
+            dispatch(temporalColor('lightblue'))
+        } else {
+            dispatch(temporalColor('red'))
+        }
+
+        if (occipitalSim >= 7) {
+            dispatch(occipitalColor('#59ff00'))
+        } else if (occipitalSim <= 6 && occipitalSim >= 5) {
+            dispatch(occipitalColor('yellow'))
+        } else if (occipitalSim < 5 && occipitalSim >= 4) {
+            dispatch(occipitalColor('lightblue'))
+        } else {
+            dispatch(occipitalColor('red'))
+        }
+
+        if (parietalSim >= 7) {
+            dispatch(temporalColor('#59ff00'))
+        } else if (parietalSim <= 6 && parietalSim >= 5) {
+            dispatch(temporalColor('yellow'))
+        } else if (parietalSim < 5 && parietalSim >= 4) {
+            dispatch(temporalColor('lightblue'))
+        } else {
+            dispatch(temporalColor('red'))
+        }
         navigate('resultado')
     }
 
