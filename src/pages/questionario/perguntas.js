@@ -57,43 +57,43 @@ const questionario = (props) => {
             "parietal: " + parietalSim)
 
         if (frontalSim >= 7) {
-            dispatch(frontalColor('#59ff00', frontalSim))
+            dispatch(frontalColor('#59ff00', 1))
         } else if (frontalSim <= 6 && frontalSim >= 5) {
-            dispatch(frontalColor('lightblue', frontalSim))
+            dispatch(frontalColor('lightblue', 2))
         } else if (frontalSim < 5 && frontalSim >= 4) {
-            dispatch(frontalColor('yellow', frontalSim))
+            dispatch(frontalColor('yellow', 3))
         } else {
-            dispatch(frontalColor('red', frontalSim))
+            dispatch(frontalColor('red', 4))
         }
 
         if (temporalSim >= 7) {
-            dispatch(temporalColor('#59ff00', temporalSim))
+            dispatch(temporalColor('#59ff00', 1))
         } else if (temporalSim <= 6 && temporalSim >= 5) {
-            dispatch(temporalColor('lightblue', temporalSim))
+            dispatch(temporalColor('lightblue', 2))
         } else if (temporalSim < 5 && temporalSim >= 4) {
-            dispatch(temporalColor('yellow', temporalSim))
+            dispatch(temporalColor('yellow', 3))
         } else {
-            dispatch(temporalColor('red', temporalSim))
+            dispatch(temporalColor('red', 4))
         }
 
         if (occipitalSim >= 7) {
-            dispatch(occipitalColor('#59ff00', occipitalSim))
+            dispatch(occipitalColor('#59ff00', 1))
         } else if (occipitalSim <= 6 && occipitalSim >= 5) {
-            dispatch(occipitalColor('lightblue', occipitalSim))
+            dispatch(occipitalColor('lightblue', 2))
         } else if (occipitalSim < 5 && occipitalSim >= 4) {
-            dispatch(occipitalColor('yellow', occipitalSim))
+            dispatch(occipitalColor('yellow', 3))
         } else {
-            dispatch(occipitalColor('red', occipitalSim))
+            dispatch(occipitalColor('red', 4))
         }
 
         if (parietalSim >= 7) {
-            dispatch(parietalColor('#59ff00', parietalSim))
+            dispatch(parietalColor('#59ff00', 1))
         } else if (parietalSim <= 6 && parietalSim >= 5) {
-            dispatch(parietalColor('lightblue', parietalSim))
+            dispatch(parietalColor('lightblue', 2))
         } else if (parietalSim < 5 && parietalSim >= 4) {
-            dispatch(parietalColor('yellow', parietalSim))
+            dispatch(parietalColor('yellow', 3))
         } else {
-            dispatch(parietalColor('red', parietalSim))
+            dispatch(parietalColor('red', 4))
         }
         navigate('resultado')
     }

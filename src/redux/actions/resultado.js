@@ -1,42 +1,42 @@
-export const frontalColor = (color, points) => {
+export const frontalColor = (color, numberOfAcitivities) => {
     return {
         type: 'ADD-FRONTAL',
         payload: {
             color,
-            points,
+            numberOfAcitivities,
             lobe: 'frontal'
         }
     }
 }
 
-export const temporalColor = (color, points) => {
+export const temporalColor = (color, numberOfAcitivities) => {
     return {
         type: 'ADD-TEMPORAL',
         payload: {
             color,
-            points,
+            numberOfAcitivities,
             lobe: 'temporal'
         }
     }
 }
 
-export const occipitalColor = (color, points) => {
+export const occipitalColor = (color, numberOfAcitivities) => {
     return {
         type: 'ADD-OCCIPITAL',
         payload: {
             color,
-            points,
+            numberOfAcitivities,
             lobe: 'occipital'
         }
     }
 }
 
-export const parietalColor = (color, points) => {
+export const parietalColor = (color, numberOfAcitivities) => {
     return {
         type: 'ADD-PARIETAL',
         payload: {
             color,
-            points,
+            numberOfAcitivities,
             lobe: 'parietal'
         }
     }
