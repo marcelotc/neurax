@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import activitiesObject from './activitiesObject';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useSelector } from 'react-redux';
@@ -9,58 +8,12 @@ import { useSelector } from 'react-redux';
 const { width } = Dimensions.get('window')
 
 const sugestedActivities = (props) => {
-    const { navigate } = props.navigation;
-
-    /*const results = useSelector(state => state.resultado);
-
-    const frontalNivel = results.find(l => { return l.lobe === 'frontal' })
-    const parietalNivel = results.find(l => { return l.lobe === 'parietal' })
-    const occipitalNivel = results.find(l => { return l.lobe === 'occipital' })
-    const temporalNivel = results.find(l => { return l.lobe === 'temporal' })
-
-    console.log(frontalNivel.numberOfAcitivities)
-    console.log(temporalNivel.numberOfAcitivities)
-    console.log(occipitalNivel.numberOfAcitivities)
-    console.log(parietalNivel.numberOfAcitivities)*/
-
-    const frontalActivities = activitiesObject.filter((l) => { return l.lobe === 'frontal' })
-    var frontalAct = frontalActivities.sort(() => Math.random() - Math.random()).slice(0, 1)
-
-    const temporalActivities = activitiesObject.filter((l) => { return l.lobe === 'temporal' })
-    var temporalAct = temporalActivities.sort(() => Math.random() - Math.random()).slice(0, 1)
-
-    const occipitalActivities = activitiesObject.filter((l) => { return l.lobe === 'occipital' })
-    var occipitalAct = occipitalActivities.sort(() => Math.random() - Math.random()).slice(0, 2)
-
-    const parietalActivities = activitiesObject.filter((l) => { return l.lobe === 'parietal' })
-    var parietalAct = parietalActivities.sort(() => Math.random() - Math.random()).slice(0, 3)
-
-    /*console.log('frontalAct', frontalAct)
-    console.log('temporalAct', temporalAct)
-    console.log('occipitalAct', occipitalAct)
-    console.log('parietalAct', parietalAct)*/
-
-    let randomActivities = []
-
-    frontalAct.forEach((elem) => {
-        randomActivities.push(elem)
+    const randomActivities = useSelector(state => { return state.activities })
+    const randomActivitiesArray = []
+    randomActivities.forEach((elem) => {
+        randomActivitiesArray.push(elem.activities)
     })
-
-    temporalAct.forEach((elem) => {
-        randomActivities.push(elem)
-    })
-
-    occipitalAct.forEach((elem) => {
-        randomActivities.push(elem)
-    })
-
-    parietalAct.forEach((elem) => {
-        randomActivities.push(elem)
-    })
-
-    console.log(randomActivities)
-
-    const [selectedActivity, setSelectedActivity] = useState(Array(randomActivities.length).fill(false)) //Array.from({ length: activitiesObject.length }, _ => false)
+    const [selectedActivity, setSelectedActivity] = useState(Array(randomActivitiesArray.length).fill(false)) //Array.from({ length: activitiesObject.length }, _ => false)
     const [activitiesCount, setActivitiesCount] = useState(0);
     const [activityName] = useState([]);
 
@@ -103,7 +56,7 @@ const sugestedActivities = (props) => {
             <Text style={styles.title}>Selecione algumas:</Text>
             <ScrollView style={styles.questionsContainer}>
                 <View style={styles.tags}>
-                    {randomActivities.map((data, i) => (
+                    {randomActivitiesArray.map((data, i) => (
                         <TouchableOpacity key={data.activity} onPress={() => toggleSelectedActivity(data, i)}>
                             <Text style={selectedActivity[i] ? styles.selectedTag : styles.tagsText}>{data.activity}</Text>
                         </TouchableOpacity>
