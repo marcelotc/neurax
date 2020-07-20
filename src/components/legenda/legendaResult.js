@@ -8,11 +8,11 @@ const LegendaResult = () => {
     return (
         <View style={styles.container}>
             <View style={styles.legendaContainer}>
-                <View style={{ ...styles.icon, backgroundColor: 'lightblue' }}></View>
+                <View style={{ ...styles.icon, backgroundColor: '#59ff00' }}></View>
                 <Text style={styles.text}>Excelente</Text>
             </View>
             <View style={styles.legendaContainer}>
-                <View style={{ ...styles.icon, backgroundColor: '#59ff00' }}></View>
+                <View style={{ ...styles.icon, backgroundColor: 'lightblue' }}></View>
                 <Text style={styles.text}>Bom</Text>
             </View>
             <View style={styles.legendaContainer}>

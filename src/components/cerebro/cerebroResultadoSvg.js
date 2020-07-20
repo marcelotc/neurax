@@ -13,15 +13,19 @@ const CerebroSvg = () => {
     const [nivelParietal, setNivelParietal] = useState('grey');
 
     useEffect(() => {
-        let colorFrontal = colors.find((c) => { return c.lobe === 'frontal' });
-        let colorTemporal = colors.find((c) => { return c.lobe === 'temporal' });
-        let colorOccipital = colors.find((c) => { return c.lobe === 'occipital' });
-        let colorParietal = colors.find((c) => { return c.lobe === 'parietal' });
+        if (colors.length != 0) {
+            let colorFrontal = colors.find((c) => { return c.lobe === 'frontal' });
+            let colorTemporal = colors.find((c) => { return c.lobe === 'temporal' });
+            let colorOccipital = colors.find((c) => { return c.lobe === 'occipital' });
+            let colorParietal = colors.find((c) => { return c.lobe === 'parietal' });
 
-        setNivelFrontal(colorFrontal.color)
-        setNivelTemporal(colorTemporal.color)
-        setNivelOccipital(colorOccipital.color)
-        setNivelParietal(colorParietal.color)
+            setNivelFrontal(colorFrontal.color)
+            setNivelTemporal(colorTemporal.color)
+            setNivelOccipital(colorOccipital.color)
+            setNivelParietal(colorParietal.color)
+        } else {
+            return;
+        }
 
     }, [])
 

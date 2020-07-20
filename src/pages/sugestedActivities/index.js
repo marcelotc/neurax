@@ -4,10 +4,36 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import activitiesObject from './activitiesObject';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import { useSelector } from 'react-redux';
+
 const { width } = Dimensions.get('window')
 
 const sugestedActivities = (props) => {
     const { navigate } = props.navigation;
+
+    const results = useSelector(state => state.resultado);
+
+    if (results.length != 0) {
+
+        const frontalPoints = results.find(l => { return l.lobe === 'frontal' })
+        const parietalPoints = results.find(l => { return l.lobe === 'parietal' })
+        const occipitalPoints = results.find(l => { return l.lobe === 'occipital' })
+        const temporalPoints = results.find(l => { return l.lobe === 'temporal' })
+
+        console.log(frontalPoints.points)
+        console.log(temporalPoints.points)
+        console.log(occipitalPoints.points)
+        console.log(parietalPoints.points)
+    } else {
+        const excelente = 1;
+        const bom = 2;
+        const medio = 3;
+        const ruim = 4;
+        const frontalActivities = activitiesObject.filter((l) => { return l.lobe === 'frontal' })
+        console.log('frontalActivities', frontalActivities)
+        var item = frontalActivities.sort(() => Math.random() - Math.random()).slice(0, excelente)
+        console.log('item', item)
+    }
 
     const [selectedActivity, setSelectedActivity] = useState(Array(activitiesObject.length).fill(false)) //Array.from({ length: activitiesObject.length }, _ => false)
     const [activitiesCount, setActivitiesCount] = useState(0);

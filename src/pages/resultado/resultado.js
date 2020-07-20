@@ -18,11 +18,11 @@ const resultado = (props) => {
                     <Text style={styles.legendaTitle}>Legenda</Text>
                     <View style={styles.bottomItemInner}>
                         <View style={styles.legendaContainer}>
-                            <View style={{ ...styles.icon, backgroundColor: 'lightblue' }}></View>
+                            <View style={{ ...styles.icon, backgroundColor: '#59ff00' }}></View>
                             <Text style={styles.legendaText}>Excelente</Text>
                         </View>
                         <View style={styles.legendaContainer}>
-                            <View style={{ ...styles.icon, backgroundColor: '#59ff00' }}></View>
+                            <View style={{ ...styles.icon, backgroundColor: 'lightblue' }}></View>
                             <Text style={styles.legendaText}>Bom</Text>
                         </View>
                         <View style={styles.legendaContainer}>

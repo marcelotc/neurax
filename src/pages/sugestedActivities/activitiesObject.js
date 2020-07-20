@@ -2,34 +2,39 @@
 
 export default [
     {
-        activity: "Ler um livro"
+        activity: "Ler um livro",
+        lobe: 'frontal'
     },
     {
-        activity: "Praticar esportes"
+        activity: "Praticar esportes",
+        lobe: 'frontal'
     },
 
     {
-        activity: "Estudar um língua estrangeira"
+        activity: "Estudar um língua estrangeira",
+        lobe: 'frontal'
+    },
+    {
+        activity: "Cozinhar",
+        lobe: 'occipital'
 
     },
     {
-        activity: "Cozinhar"
+        activity: "Se alimentar melhor",
+        lobe: 'temporal'
 
     },
     {
-        activity: "Se alimentar melhor"
+        activity: "Tocar um instrumento",
+        lobe: 'temporal'
+    },
+    {
+        activity: "Dançar",
+        lobe: 'parietal'
 
     },
     {
-        activity: "Tocar um instrumento"
-
-    },
-    {
-        activity: "Dançar"
-
-    },
-    {
-        activity: "Menos tempo em redes sociais"
-
+        activity: "Menos tempo em redes sociais",
+        lobe: 'parietal'
     },
 ];
