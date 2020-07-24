@@ -5,9 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useSelector } from 'react-redux';
 
-const { width } = Dimensions.get('window')
+const { width } = Dimensions.get('window');
 
 const sugestedActivities = (props) => {
+    const { navigate } = props.navigation;
+
     const randomActivities = useSelector(state => { return state.activities })
     const randomActivitiesArray = []
     randomActivities.forEach((elem) => {
@@ -46,6 +48,8 @@ const sugestedActivities = (props) => {
 
         //chama requisição
         alert('Atividades selectionadas: \n\n' + activitiesArray);
+
+        navigate('calendarSetup')
     }
 
     return (

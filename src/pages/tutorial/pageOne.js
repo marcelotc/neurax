@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import ButtonNext from '../../components/buttons/ButtonNext'
+import { Title } from 'react-native-paper';
 
 const pageOne = (props) => {
     const { navigate } = props.navigation;

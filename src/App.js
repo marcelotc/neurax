@@ -17,7 +17,8 @@ import Resultado from './pages/resultado/resultado';
 import PageThree from './pages/tutorial/pageThree';
 import Perguntas from './pages/questionario/perguntas';
 import SugestedActivities from './pages/sugestedActivities';
-import cerebroSvg from './components/cerebro/cerebroSvg';
+import CalendarSetup from './pages/calendarSetup';
+import CerebroSvg from './components/cerebro/cerebroSvg';
 
 const Stack = createStackNavigator();
 
@@ -33,7 +34,7 @@ const App = () => {
                         }}
                         initialRouteName="Main">
                         <Stack.Screen name="Main" component={Main} />
-                        <Stack.Screen name="cerebroSvg" component={cerebroSvg} />
+                        <Stack.Screen name="cerebroSvg" component={CerebroSvg} />
                         <Stack.Screen name="login" component={Login} />
                         <Stack.Screen name="cadastro" component={Cadastro} />
                         <Stack.Screen name="pageOne" component={PageOne} />
@@ -42,6 +43,7 @@ const App = () => {
                         <Stack.Screen name="perguntas" component={Perguntas} />
                         <Stack.Screen name="resultado" component={Resultado} />
                         <Stack.Screen name="sugestedActivities" component={SugestedActivities} />
+                        <Stack.Screen name="calendarSetup" component={CalendarSetup} />
                     </Stack.Navigator>
                 </NavigationContainer>
             </PaperProvider>

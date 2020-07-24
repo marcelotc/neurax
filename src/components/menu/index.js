@@ -17,13 +17,16 @@ const Menu = (props) => {
                     <Text style={styles.text}>Calendário</Text>
                 </View>
                 <View style={styles.noSelectedItems}>
-                    <Text style={styles.text} onPress={() => navigate('resultado')}>Progresso</Text>
+                    <Text style={styles.text} onPress={() => navigate('resultado')}>resultado</Text>
                 </View>
                 <View style={styles.noSelectedItems}>
-                    <Text style={styles.text} onPress={() => navigate('login')}>Configurações</Text>
+                    <Text style={styles.text} onPress={() => navigate('login')}>login</Text>
                 </View>
                 <View style={styles.noSelectedItems}>
-                    <Text style={styles.text} onPress={() => navigate('perguntas')}>Sair</Text>
+                    <Text style={styles.text} onPress={() => navigate('perguntas')}>questionario</Text>
+                </View>
+                <View style={styles.noSelectedItems}>
+                    <Text style={styles.text} onPress={() => navigate('calendarSetup')}>calendário setup</Text>
                 </View>
             </View>
         </View>
