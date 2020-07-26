@@ -5,6 +5,7 @@ import ButtonNext from '../../components/buttons/ButtonNext';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import activitiesObject from '../../pages/sugestedActivities/activitiesObject';
 import { selectedActivitiesArray } from '../../redux/actions/activities'
+import { choosedActivitiesArray } from '../../redux/actions/choosedActivities'
 import { useDispatch, useSelector } from 'react-redux';
 
 const resultado = (props) => {

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useDispatch } from 'react-redux';
+import { choosedActivitiesArray } from '../../redux/actions/choosedActivities';
 
 import { useSelector } from 'react-redux';
 
@@ -9,6 +11,7 @@ const { width } = Dimensions.get('window');
 
 const sugestedActivities = (props) => {
     const { navigate } = props.navigation;
+    const dispatch = useDispatch();
 
     const randomActivities = useSelector(state => { return state.activities })
     const randomActivitiesArray = []
@@ -46,6 +49,7 @@ const sugestedActivities = (props) => {
             }
         }
 
+        dispatch(choosedActivitiesArray(activitiesArray))
         //chama requisição
         alert('Atividades selectionadas: \n\n' + activitiesArray);
 

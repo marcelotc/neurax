@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useSelector } from 'react-redux';
 
 const calendarSetup = () => {
     const [language, setLanguage] = useState();
@@ -9,6 +10,13 @@ const calendarSetup = () => {
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
     const [timeOne, setTimeOne] = useState('');
+
+    const choosedActivities = useSelector(state => { return state.choosedActivities })
+    const choosedActivitiesArray = []
+    choosedActivities.forEach((elem) => {
+        choosedActivitiesArray.push(elem.activities)
+    })
+    console.log('choosedActivities', choosedActivitiesArray)
 
     const onChange = (event, selectedDate) => {
         setShow(false);

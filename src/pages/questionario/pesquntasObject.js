@@ -16,7 +16,7 @@ export default [
         question: 'Você pratica serviços sociais e voluntariado?'
 
     },
-    {
+    /*{
         lobe: 'frontal',
         question: 'Você pratica pelo menos 1 das seguintes atividades?',
         atividades: ['- Tocar um instrumento\n\n', '- Dança\n\n', '- Artes cênicas\n\n', '- Teatro\n\n']
@@ -108,5 +108,5 @@ export default [
     {
         lobe: 'occipital',
         question: 'Você costuma escrever com papel e caneta no seu dia-a-dia?'
-    },
+    },*/
 ];
