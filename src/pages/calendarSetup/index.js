@@ -94,7 +94,6 @@ const calendarSetup = () => {
                                     selectedValue={week[i]}
                                     style={{ color: '#fff', marginLeft: '35%' }}
                                     mode={'dropdown'}
-                                    itemStyle={styles.itemStyle}
                                     onValueChange={(itemValue) => handleChangePicker(itemValue, i)} >
                                     <Picker.Item label="Segunda-feira" value="segunda" />
                                     <Picker.Item label="Terça-feira" value="terca" />
@@ -109,18 +108,20 @@ const calendarSetup = () => {
                                 <TouchableOpacity
                                     style={styles.timeButton}
                                     onPress={() => showTimepickerOne(i)}>
-                                    <Text style={styles.timeText}>{timeOneFormated[i]}</Text>
+                                    <Text style={styles.timeText}>{timeOneFormated[i] ? timeOneFormated[i] : 'Selecione um horário de início'}</Text>
                                 </TouchableOpacity>
                                 <Text style={{
                                     color: '#fff',
                                     fontSize: 20,
                                     marginLeft: 15,
                                     marginRight: 15,
+                                    marginTop: 10,
+                                    marginBottom: 10,
                                 }}>às</Text>
                                 <TouchableOpacity
                                     style={styles.timeButton}
                                     onPress={() => showTimepickerTwo(i)}>
-                                    <Text style={styles.timeText}>{timeTwoFormated[i]}</Text>
+                                    <Text style={styles.timeText}>{timeTwoFormated[i] ? timeTwoFormated[i] : 'Selecione um horário de término'}</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -166,22 +167,16 @@ const styles = StyleSheet.create({
     scrollviewContainer: {
         flex: 1,
         backgroundColor: '#000',
-        marginBottom: '10%',
+        marginBottom: '5%',
         borderColor: '#404042',
         borderBottomWidth: 1,
         borderRadius: 9,
-    },
-    itemStyle: {
-        fontSize: 15,
-        height: 75,
-        color: 'black',
-        textAlign: 'center',
-        fontWeight: 'bold'
     },
     title: {
         color: '#fff',
         fontSize: 25,
         marginLeft: '10%',
+        marginTop: 10
     },
     confirmContainer: {
         backgroundColor: '#212121',
@@ -189,14 +184,15 @@ const styles = StyleSheet.create({
         borderRadius: 9,
         borderWidth: 1,
         borderColor: '#fff',
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 50,
-        paddingRight: 50,
+        padding: 5,
+        marginBottom: '6%',
+        width: '82%'
     },
     confirmButton: {
         color: '#fff',
         fontSize: 30,
+        marginBottom: 5,
+        alignSelf: 'center'
     },
     activity: {
         color: '#fff',
@@ -215,7 +211,7 @@ const styles = StyleSheet.create({
         marginTop: 50
     },
     selectPicker: {
-        width: 300,
+        width: '82%',
         borderColor: '#fff',
         borderBottomWidth: 1,
         borderTopWidth: 1,
@@ -223,28 +219,30 @@ const styles = StyleSheet.create({
         borderRightWidth: 1,
         borderRadius: 6,
         alignSelf: 'center',
-        marginBottom: 20
+        marginBottom: 30,
+        backgroundColor: '#212121',
     },
     timesContainer: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'baseline'
+        alignItems: 'center',
+        marginBottom: 25
     },
     timeButton: {
         borderColor: '#fff',
+        backgroundColor: '#212121',
         borderBottomWidth: 1,
         borderTopWidth: 1,
         borderLeftWidth: 1,
         borderRightWidth: 1,
         borderRadius: 6,
-        width: '30%',
-        marginBottom: 20,
+        width: '82%'
     },
     timeText: {
         color: '#fff',
-        fontSize: 20,
+        fontSize: 16,
         alignSelf: 'center',
-        padding: 5
+        padding: 15
     }
 })
 
