@@ -21,12 +21,27 @@ const Calendar = () => {
 
     const [items, setItems] = useState({});
     const [modalVisible, setModalVisible] = useState(false);
-    const [activitiesDates, setActivitiesDates] = useState();
+    const [activitiesDates, setActivitiesDates] = useState('2020-07-27');
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+
+    console.log(today.toString())
 
     const loadItems = () => {
         setTimeout(() => {
             const newItems = {
-                '2020-07-21': [{ name: 'item 2 - any js ', height: 80, setModalVisible }],
+                '2020-07-27': [
+                    {
+                        name: 'Praticar esporte',
+                        time: '18:30 - 19:00',
+                        setModalVisible
+                    },
+                ],
             };
             setItems(newItems)
         }, 1000);
@@ -101,15 +116,30 @@ const Calendar = () => {
 
 const renderItem = (item) => {
     return (
-        <TouchableOpacity
+        <View
             testID={testIDs.agenda.ITEM}
-            style={[styles.item, { height: item.height }]}
-            onPress={() => {
+            style={styles.item}>
+            <View>
+                <Text style={styles.itemText}>{item.name}</Text>
+                <View style={styles.itemTime}>
+                    <Text style={styles.itemTimeText}>{item.time}</Text>
+                </View>
+                {/*onPress={() => {
                 item.setModalVisible(true);
-            }}
-        >
-            <Text>{item.name}</Text>
-        </TouchableOpacity>
+            }} */}
+            </View>
+            <View>
+                <Text style={styles.completedText}>Atividade completada?</Text>
+                <View style={styles.completedIconsContainer}>
+                    <TouchableOpacity style={styles.completedIconsChecked}>
+                        <Icon name="check-circle" color='green' size={35} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Icon name="cancel" color='red' size={35} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </View>
     );
 }
 
@@ -145,7 +175,48 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         marginRight: 10,
-        marginTop: 17
+        marginTop: 17,
+        flexDirection: 'column',
+        borderWidth: 1,
+        borderTopColor: 'lightgrey',
+        borderBottomColor: 'lightgrey',
+        borderLeftColor: 'lightgrey',
+        borderRightColor: 'lightgrey',
+        height: 150
+    },
+    itemText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        alignSelf: 'center'
+    },
+    itemTime: {
+        borderWidth: 1,
+        borderTopColor: '#000',
+        borderBottomColor: '#000',
+        borderLeftColor: '#000',
+        borderRightColor: '#000',
+        borderRadius: 5,
+        marginTop: 9,
+        backgroundColor: '#f5f5f5',
+        marginBottom: 10,
+        width: '40%',
+        alignSelf: 'center'
+    },
+    itemTimeText: {
+        alignSelf: 'center',
+    },
+    completedText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        alignSelf: 'center'
+    },
+    completedIconsContainer: {
+        flexDirection: 'row',
+        marginTop: 3,
+        alignSelf: 'center'
+    },
+    completedIconsChecked: {
+        marginRight: 50
     },
     emptyDate: {
         height: 15,

@@ -32,29 +32,33 @@ const calendarSetup = () => {
     }
 
     const onChangeOne = (event, date, i) => {
-        showOne.splice(i, 1, false)
-        setShowOne([...showOne]);
+        if (date != undefined) {
+            showOne.splice(i, 1, false)
+            setShowOne([...showOne]);
 
-        timeOne.splice(i, 1, date)
-        setTimeOne([...timeOne])
+            timeOne.splice(i, 1, date)
+            setTimeOne([...timeOne])
 
-        let isoDate = date.toString();
-        let result = isoDate.match(/\d\d:\d\d/);
-        timeOneFormated.splice(i, 1, result[0])
-        setTimeOneFormated([...timeOneFormated])
+            let isoDate = date.toString();
+            let result = isoDate.match(/\d\d:\d\d/);
+            timeOneFormated.splice(i, 1, result[0])
+            setTimeOneFormated([...timeOneFormated])
+        }
     };
 
     const onChangeTwo = (event, date, i) => {
-        showTwo.splice(i, 1, false)
-        setShowTwo([...showTwo]);
+        if (date != undefined) {
+            showTwo.splice(i, 1, false)
+            setShowTwo([...showTwo]);
 
-        timeTwo.splice(i, 1, date)
-        setTimeTwo([...timeTwo])
+            timeTwo.splice(i, 1, date)
+            setTimeTwo([...timeTwo])
 
-        let isoDate = date.toString();
-        let result = isoDate.match(/\d\d:\d\d/);
-        timeTwoFormated.splice(i, 1, result[0])
-        setTimeTwoFormated([...timeTwoFormated])
+            let isoDate = date.toString();
+            let result = isoDate.match(/\d\d:\d\d/);
+            timeTwoFormated.splice(i, 1, result[0])
+            setTimeTwoFormated([...timeTwoFormated])
+        }
     };
 
     const showTimepickerOne = (i) => {
@@ -76,6 +80,7 @@ const calendarSetup = () => {
         console.log(timeOneFormated)
         console.log(timeTwoFormated)
         console.log('=======================================================')
+
     }
 
     return (
