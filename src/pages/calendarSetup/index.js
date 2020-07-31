@@ -77,42 +77,37 @@ const calendarSetup = () => {
 
     const confirmButton = () => {
 
-        var aryDates = GetDates(2);
+        var aryDates = GetDates(30);
+
+        const getDay = date => {
+            var startDate = new Date(date);
+            var day = 60 * 60 * 24 * 1000;
+            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var isoDate = new Date(startDate.getTime() + day)
+            var dayName = days[isoDate.getDay()].toLowerCase();
+
+            return dayName
+
+        }
+
+        aryDates.sort((a, b) => a.localeCompare(b));
+
+        const activities = ["Study", "Go to the gym"]
+        const times = ["11:30 - 12:30", "18:30 - 19:00"]
+        const weeks = ["monday", "wednesday"];
+
+        const weeksMap = new Map(weeks.map((week, i) => [week, {
+            name: activities[i],
+            time: times[i],
+            week
+        }]));
+
+        const res = Object.assign({},
+            ...aryDates.map(date => ({ [date]: [{ name: undefined, time: undefined, week: undefined, ...weeksMap.get(getDay(date)) }] }))
+        );
+
         console.log(aryDates);
-
-        var activities = [];
-        var loop = [];
-
-        var ativi = ["Esporte", "teste", "tenis"]
-        var horas = ["18:00 - 44:00", "19:00 - 23:00", "20:00 - 21:00"]
-        var weekArray = ["segunda", "quarta", "sabado"]
-
-        for (var i = 0; i < ativi.length; i++) {
-            activities.push([ativi[i], horas[i]]);
-        }
-
-        for (var i = 0; i < activities.length; i++) {
-            loop.push({ name: activities[i][0], time: activities[i][1], week: '' });
-        }
-
-        loop.forEach(function (element, i) {
-            element.week = weekArray[i];
-        });
-
-        console.log('loop', loop)
-
-        const obj = aryDates.map((dates, index) => {
-            return ('"' + dates + '":' + "[{" +
-                '"name"' + ":" + '"' + ativi[index] + '"' + "," +
-                '"time"' + ":" + '"' + horas[index] + '"' + "," +
-                '"week"' + ": " + '"' + weekArray[index] + '"' +
-                "}]");
-        })
-
-        const jsonObj = `{${obj}}`
-
-        console.log(JSON.parse(jsonObj))
-        dispatch(activitiesCalendarArray(JSON.parse(jsonObj)))
+        dispatch(activitiesCalendarArray(res))
         var t1 = ["18:00", "19:00", "20:00"]
         var t2 = ["44:00", "23:00", "21:00"]
         var t3 = t1.map((_, i) => `${t1[i]} - ${t2[i]}`);

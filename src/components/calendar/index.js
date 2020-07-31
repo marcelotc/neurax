@@ -29,7 +29,12 @@ const Calendar = () => {
 
     const dataInicial = dataAtual()
 
-    const [items, setItems] = useState(calendarArray[0]);
+
+    useEffect(() => {
+        setItems(calendarArray[0])
+    }, [calendarArray])
+
+    const [items, setItems] = useState();
 
     const [modalVisible, setModalVisible] = useState(false);
     const [activitiesDates, setActivitiesDates] = useState('2020-07-27');

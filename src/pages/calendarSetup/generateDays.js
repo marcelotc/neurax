@@ -1,14 +1,14 @@
 export function GetDates(daysToAdd) {
     var aryDates = [];
 
-    for (var i = 0; i <= daysToAdd - 1; i++) {
+    for (var i = 0; i <= daysToAdd; i++) {
         var currentDate = new Date();
         var startDate = new Date(currentDate);
 
         // seconds * minutes * hours * milliseconds = 1 day 
         var day = 60 * 60 * 24 * 1000;
 
-        var dataAtual = new Date(startDate.getTime() + day);
+        var dataAtual = new Date(startDate.getTime());
         currentDate.setDate(dataAtual.getDate() + i);
 
         var year = currentDate.getFullYear()
@@ -26,18 +26,6 @@ export function GetDates(daysToAdd) {
     }
 
     return aryDates;
-}
-function DayAsString(dayIndex) {
-    var weekdays = new Array(7);
-    weekdays[0] = "domingo";
-    weekdays[1] = "segunda";
-    weekdays[2] = "terca";
-    weekdays[3] = "quarta";
-    weekdays[4] = "quinta";
-    weekdays[5] = "sexta";
-    weekdays[6] = "sabado";
-
-    return weekdays[dayIndex];
 }
 
 export function dataAtual() {
