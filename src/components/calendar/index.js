@@ -3,6 +3,7 @@ import { Alert, StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-na
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Agenda } from 'react-native-calendars';
 import { dataAtual } from '../../pages/calendarSetup/generateDays';
+import { useSelector } from 'react-redux';
 
 const testIDs = require('./testIds');
 
@@ -19,31 +20,16 @@ LocaleConfig.defaultLocale = 'br';
 
 
 const Calendar = () => {
+    const calendar = useSelector(state => state.calendar);
+
+    const calendarArray = []
+    calendar.forEach((elem) => {
+        calendarArray.push(elem.activities)
+    })
+
     const dataInicial = dataAtual()
 
-    const [items, setItems] = useState({
-        '2020-07-27': [
-            {
-                name: 'Praticar esporte',
-                time: '18:30 - 19:00',
-            },
-            {
-                name: 'Praticar esporte',
-                time: '18:30 - 19:00',
-            },
-        ],
-        '2020-07-29': [
-            {
-                name: 'Praticar esporte',
-                time: '18:30 - 19:00',
-            },
-            {
-                name: 'Praticar esporte',
-                time: '18:30 - 19:00',
-            },
-        ],
-    });
-
+    const [items, setItems] = useState(calendarArray[0]);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [activitiesDates, setActivitiesDates] = useState('2020-07-27');

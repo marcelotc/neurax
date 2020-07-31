@@ -9,6 +9,7 @@ import { choosedActivitiesArray } from '../../redux/actions/choosedActivities'
 import { useDispatch, useSelector } from 'react-redux';
 
 const resultado = (props) => {
+    const dispatch = useDispatch();
     const { navigate } = props.navigation;
 
     const results = useSelector(state => state.resultado);
@@ -59,8 +60,6 @@ const resultado = (props) => {
         parietalAct.forEach((elem) => {
             randomActivities.push(elem)
         })
-
-        const dispatch = useDispatch();
 
         randomActivities.forEach((elem) => {
             dispatch(selectedActivitiesArray(elem));

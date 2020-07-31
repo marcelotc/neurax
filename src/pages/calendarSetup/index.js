@@ -3,9 +3,12 @@ import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-nati
 import { Picker } from '@react-native-community/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { GetDates } from './generateDays';
-import { useSelector } from 'react-redux';
+import { activitiesCalendarArray } from '../../redux/actions/calendar';
+import { useSelector, useDispatch } from 'react-redux';
 
 const calendarSetup = () => {
+    const dispatch = useDispatch();
+
     const choosedActivities = useSelector(state => { return state.choosedActivities })
     const choosedActivitiesArray = []
     choosedActivities.forEach((elem) => {
@@ -109,7 +112,7 @@ const calendarSetup = () => {
         const jsonObj = `{${obj}}`
 
         console.log(JSON.parse(jsonObj))
-
+        dispatch(activitiesCalendarArray(JSON.parse(jsonObj)))
         var t1 = ["18:00", "19:00", "20:00"]
         var t2 = ["44:00", "23:00", "21:00"]
         var t3 = t1.map((_, i) => `${t1[i]} - ${t2[i]}`);
