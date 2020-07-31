@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Alert, StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Agenda } from 'react-native-calendars';
+import { dataAtual } from '../../pages/calendarSetup/generateDays';
 
 const testIDs = require('./testIds');
 
@@ -18,32 +19,38 @@ LocaleConfig.defaultLocale = 'br';
 
 
 const Calendar = () => {
+    const dataInicial = dataAtual()
 
-    const [items, setItems] = useState({});
+    const [items, setItems] = useState({
+        '2020-07-27': [
+            {
+                name: 'Praticar esporte',
+                time: '18:30 - 19:00',
+            },
+            {
+                name: 'Praticar esporte',
+                time: '18:30 - 19:00',
+            },
+        ],
+        '2020-07-29': [
+            {
+                name: 'Praticar esporte',
+                time: '18:30 - 19:00',
+            },
+            {
+                name: 'Praticar esporte',
+                time: '18:30 - 19:00',
+            },
+        ],
+    });
+
+
     const [modalVisible, setModalVisible] = useState(false);
     const [activitiesDates, setActivitiesDates] = useState('2020-07-27');
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-
-    console.log(today.toString())
-
     const loadItems = () => {
         setTimeout(() => {
-            const newItems = {
-                '2020-07-27': [
-                    {
-                        name: 'Praticar esporte',
-                        time: '18:30 - 19:00',
-                        setModalVisible
-                    },
-                ],
-            };
-            setItems(newItems)
+            setItems(items)
         }, 1000);
     }
 
@@ -76,7 +83,7 @@ const Calendar = () => {
                 //testID={testIDs.agenda.CONTAINER}
                 //items={items}
                 loadItemsForMonth={loadItems}
-                selected={'2020-07-21'}
+                selected={dataInicial}
                 renderItem={renderItem}
                 renderKnob={() => {
                     return (<Icon name="expand-more" color='#000' size={30} />
@@ -170,7 +177,7 @@ const timeToString = (time) => {
 
 const styles = StyleSheet.create({
     item: {
-        backgroundColor: 'white',
+        backgroundColor: '#fff', // #d2ffa6 #ffccc9
         flex: 1,
         borderRadius: 5,
         padding: 10,
