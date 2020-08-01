@@ -86,7 +86,6 @@ const Calendar = () => {
                 renderEmptyDate={renderEmptyDate}
                 renderEmptyData={renderEmptyData}
                 rowHasChanged={rowHasChanged}
-                onRefresh={() => console.log('refreshing...')}
             //markingType={'period'}
             /*markedDates={{
                 '2017-05-08': { textColor: '#43515c' },
@@ -144,7 +143,7 @@ const renderItem = (item) => {
 const renderEmptyDate = () => {
     return (
         <View style={styles.emptyDate}>
-            <Text>Esta é uma data vazia!</Text>
+            <Text></Text>
         </View>
     );
 }

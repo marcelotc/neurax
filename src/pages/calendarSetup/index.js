@@ -6,8 +6,9 @@ import { GetDates } from './generateDays';
 import { activitiesCalendarArray } from '../../redux/actions/calendar';
 import { useSelector, useDispatch } from 'react-redux';
 
-const calendarSetup = () => {
+const calendarSetup = (props) => {
     const dispatch = useDispatch();
+    const { navigate } = props.navigation
 
     const choosedActivities = useSelector(state => { return state.choosedActivities })
     const choosedActivitiesArray = []
@@ -19,7 +20,7 @@ const calendarSetup = () => {
 
     //const mockedSelectedActivities = ["Praticar esportes", "Ler um livro", "Tocar um instrumento"]
 
-    const [week, setWeek] = useState(Array(choosedActivitiesArray.length).fill(''));
+    const [week, setWeek] = useState(Array(choosedActivitiesArray.length).fill('monday'));
     const [mode, setMode] = useState('date');
     const [showOne, setShowOne] = useState(Array(choosedActivitiesArray.length).fill(false));
     const [showTwo, setShowTwo] = useState(Array(choosedActivitiesArray.length).fill(false));
@@ -92,29 +93,34 @@ const calendarSetup = () => {
 
         aryDates.sort((a, b) => a.localeCompare(b));
 
-        const activities = ["Study", "Go to the gym"]
-        const times = ["11:30 - 12:30", "18:30 - 19:00"]
-        const weeks = ["monday", "wednesday"];
+        //const activities = ["Study", "Go to the gym"]
+        //const times = ["11:30 - 12:30", "18:30 - 19:00"]
+        //const weeks = ["monday", "wednesday"];
 
-        const weeksMap = new Map(weeks.map((week, i) => [week, {
-            name: activities[i],
-            time: times[i],
-            week
-        }]));
+        var t1 = timeOneFormated
+        var t2 = timeTwoFormated
+        var times = t1.map((_, i) => `${t1[i]} - ${t2[i]}`);
 
-        const res = Object.assign({},
-            ...aryDates.map(date => ({ [date]: [{ name: undefined, time: undefined, week: undefined, ...weeksMap.get(getDay(date)) }] }))
-        );
+        const weeksMap = week.reduce((m, week, i) => {
+            if (!m.has(week)) {
+                m.set(week, []);
+            };
+            m.get(week).push({
+                name: choosedActivitiesArray[i],
+                time: times[i],
+                week
+            });
+            return m;
+        }, new Map());
 
-        console.log(aryDates);
+        const res = Object.fromEntries(
+            aryDates.map(date => [date, (weeksMap.get(getDay(date)) || []).map(obj => ({
+                ...obj
+            }))]));
+
+        console.log(res);
         dispatch(activitiesCalendarArray(res))
-        var t1 = ["18:00", "19:00", "20:00"]
-        var t2 = ["44:00", "23:00", "21:00"]
-        var t3 = t1.map((_, i) => `${t1[i]} - ${t2[i]}`);
-        //["Praticar esportes", "Ler um livro"]
-        //["quarta", "terca"]
-        //["02:31", "10:31"]
-        //["22:31", "23:31"]
+        navigate('Main')
 
         console.log('=======================================================')
         console.log(choosedActivitiesArray)
@@ -141,13 +147,13 @@ const calendarSetup = () => {
                                     style={{ color: '#fff', marginLeft: '35%' }}
                                     mode={'dropdown'}
                                     onValueChange={(itemValue) => handleChangePicker(itemValue, i)} >
-                                    <Picker.Item label="Segunda-feira" value="segunda" />
-                                    <Picker.Item label="Terça-feira" value="terca" />
-                                    <Picker.Item label="Quarta-feira" value="quarta" />
-                                    <Picker.Item label="Quinta-feira" value="quinta" />
-                                    <Picker.Item label="Sexta-feira" value="sexta" />
-                                    <Picker.Item label="Sábado" value="sabado" />
-                                    <Picker.Item label="Domingo" value="domingo" />
+                                    <Picker.Item label="Segunda-feira" value="monday" />
+                                    <Picker.Item label="Terça-feira" value="tuesday" />
+                                    <Picker.Item label="Quarta-feira" value="wednesday" />
+                                    <Picker.Item label="Quinta-feira" value="thursday" />
+                                    <Picker.Item label="Sexta-feira" value="friday" />
+                                    <Picker.Item label="Sábado" value="saturday" />
+                                    <Picker.Item label="Domingo" value="sunday" />
                                 </Picker>
                             </View>
                             <View style={styles.timesContainer}>

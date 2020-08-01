@@ -1,7 +1,7 @@
 export function GetDates(daysToAdd) {
     var aryDates = [];
 
-    for (var i = 0; i <= daysToAdd; i++) {
+    for (var i = 1; i <= daysToAdd; i++) {
         var currentDate = new Date();
         var startDate = new Date(currentDate);
 
