@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Agenda } from 'react-native-calendars';
 import { dataAtual } from '../../pages/calendarSetup/generateDays';
 import { useSelector } from 'react-redux';
+import PushNotification from "react-native-push-notification";
 
 const testIDs = require('./testIds');
 
@@ -29,20 +30,51 @@ const Calendar = () => {
 
     const dataInicial = dataAtual()
 
+    useEffect(() => {
+        PushNotification.configure({
+            onRegister: function (token) {
+                console.log("TOKEN:", token);
+            },
+
+            onRegistrationError: function (err) {
+                console.error(err.message, err);
+            },
+
+            permissions: {
+                alert: true,
+                badge: true,
+                sound: true,
+            },
+
+            popInitialNotification: true,
+
+            requestPermissions: false,
+        });
+
+        notification();
+    }, [])
 
     useEffect(() => {
         setItems(calendarArray[0])
+
     }, [calendarArray])
 
     const [items, setItems] = useState();
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [activitiesDates, setActivitiesDates] = useState('2020-07-27');
 
     const loadItems = () => {
         setTimeout(() => {
             setItems(items)
         }, 1000);
+    }
+
+    const notification = () => {
+        PushNotification.localNotificationSchedule({
+            title: "Você possue 1 atividade para hoje",
+            message: "Ler um livro",
+            date: new Date(Date.now() + 5 * 1000), // in 60 secs
+        });
     }
 
     return (
@@ -71,8 +103,6 @@ const Calendar = () => {
                 </View>
             </Modal>
             <Agenda
-                //testID={testIDs.agenda.CONTAINER}
-                //items={items}
                 loadItemsForMonth={loadItems}
                 selected={dataInicial}
                 renderItem={renderItem}
@@ -86,26 +116,6 @@ const Calendar = () => {
                 renderEmptyDate={renderEmptyDate}
                 renderEmptyData={renderEmptyData}
                 rowHasChanged={rowHasChanged}
-            //markingType={'period'}
-            /*markedDates={{
-                '2017-05-08': { textColor: '#43515c' },
-                '2017-05-09': { textColor: '#43515c' },
-                '2017-05-14': { startingDay: true, endingDay: true, color: 'blue' },
-                '2017-05-21': { startingDay: true, color: 'blue' },
-                '2017-05-22': { endingDay: true, color: 'gray' },
-                '2017-05-24': { startingDay: true, color: 'gray' },
-                '2017-05-25': { color: 'gray' },
-                '2020-05-16': { startingDay: true, endingDay: true, color: 'blue' }
-            }}
-            monthFormat={'yyyy'}
-            theme={{ calendarBackground: '#fff', agendaKnobColor: '#000' }}
-            renderKnob={() => {
-                return (<Icon name="expand-more" color='#000' size={30} />
-                );
-            }}
-            renderDay={(day, item) => (<Text>{day ? day.day : 'item'}</Text>)}
-            hideExtraDays={false}
-            */
             />
         </>
     );
