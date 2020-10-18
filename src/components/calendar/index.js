@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Agenda } from 'react-native-calendars';
 import { dataAtual } from '../../pages/calendarSetup/generateDays';
 import { useSelector } from 'react-redux';
-import PushNotification from "react-native-push-notification";
+import AsyncStorage from '@react-native-community/async-storage';
 
 const testIDs = require('./testIds');
 
@@ -31,50 +31,31 @@ const Calendar = () => {
     const dataInicial = dataAtual()
 
     useEffect(() => {
-        PushNotification.configure({
-            onRegister: function (token) {
-                console.log("TOKEN:", token);
-            },
-
-            onRegistrationError: function (err) {
-                console.error(err.message, err);
-            },
-
-            permissions: {
-                alert: true,
-                badge: true,
-                sound: true,
-            },
-
-            popInitialNotification: true,
-
-            requestPermissions: false,
-        });
-
-        notification();
-    }, [])
-
-    useEffect(() => {
         setItems(calendarArray[0])
-
+        //storage();
+        //getData();
     }, [calendarArray])
+
+    const storage = async () => {
+        if (calendarArray[0] != undefined) {
+            await AsyncStorage.setItem('activities', JSON.stringify(calendarArray[0]))
+        }
+    }
+
+    const getData = async () => {
+        const value = await AsyncStorage.getItem('activities')
+        if (value !== null) {
+            console.log("localstorage", value)
+            setItems(JSON.parse(value))
+        }
+    }
 
     const [items, setItems] = useState();
 
     const [modalVisible, setModalVisible] = useState(false);
 
     const loadItems = () => {
-        setTimeout(() => {
-            setItems(items)
-        }, 1000);
-    }
-
-    const notification = () => {
-        PushNotification.localNotificationSchedule({
-            title: "Você possue 1 atividade para hoje",
-            message: "Ler um livro",
-            date: new Date(Date.now() + 5 * 1000), // in 60 secs
-        });
+        setItems(items)
     }
 
     return (

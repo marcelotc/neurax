@@ -5,6 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { GetDates } from './generateDays';
 import { activitiesCalendarArray } from '../../redux/actions/calendar';
 import { useSelector, useDispatch } from 'react-redux';
+import notifications from './notifications';
 
 const calendarSetup = (props) => {
     const dispatch = useDispatch();
@@ -17,8 +18,6 @@ const calendarSetup = (props) => {
             choosedActivitiesArray.push(activity)
         })
     })
-
-    //const mockedSelectedActivities = ["Praticar esportes", "Ler um livro", "Tocar um instrumento"]
 
     const [week, setWeek] = useState(Array(choosedActivitiesArray.length).fill('monday'));
     const [mode, setMode] = useState('date');
@@ -93,10 +92,6 @@ const calendarSetup = (props) => {
 
         aryDates.sort((a, b) => a.localeCompare(b));
 
-        //const activities = ["Study", "Go to the gym"]
-        //const times = ["11:30 - 12:30", "18:30 - 19:00"]
-        //const weeks = ["monday", "wednesday"];
-
         var t1 = timeOneFormated
         var t2 = timeTwoFormated
         var times = t1.map((_, i) => `${t1[i]} - ${t2[i]}`);
@@ -118,7 +113,8 @@ const calendarSetup = (props) => {
                 ...obj
             }))]));
 
-        console.log(res);
+        console.log('calendarArray setup', res)
+        notifications(choosedActivitiesArray, timeOne)
         dispatch(activitiesCalendarArray(res))
         navigate('Main')
 

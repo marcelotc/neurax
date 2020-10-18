@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     View,
+    Text,
     StyleSheet,
     StatusBar,
     TouchableWithoutFeedback,
@@ -17,6 +18,8 @@ import Menu from '../components/menu';
 import Calendar from '../components/calendar'
 
 import SplashScreen from 'react-native-splash-screen';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Main = (props) => {
     console.disableYellowBox = true; // A lib SideMenu da um warning  
@@ -64,6 +67,9 @@ const Main = (props) => {
                         </View>
                         <View style={styles.calendarContainer}>
                             <Calendar></Calendar>
+                            <TouchableOpacity onPress={() => {
+                                AsyncStorage.clear();
+                            }} style={{ marginLeft: 130 }}><Text>Limpar async storage</Text></TouchableOpacity>
                         </View>
                     </View>
                 </SideMenu>

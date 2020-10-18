@@ -5,7 +5,6 @@ export function GetDates(daysToAdd) {
         var currentDate = new Date();
         var startDate = new Date(currentDate);
 
-        // seconds * minutes * hours * milliseconds = 1 day 
         var day = 60 * 60 * 24 * 1000;
 
         var dataAtual = new Date(startDate.getTime());
